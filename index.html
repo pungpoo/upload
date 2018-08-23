@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+body{width:610;}
+#frmFile {border-top:#F0F0F0 2px solid;background:#FAF8F8;padding:10px;}
+.demoInputBox{padding:10px; border:#F0F0F0 1px solid; border-radius:4px;background-color:#FFF;}
+#file_error{color: #FF0000;}
+#btnSubmit{background-color:#2FC332;border:0;padding:10px 40px; margin:15px 0px; color:#FFF;border:#F0F0F0 1px solid; border-radius:4px;}
+</style>
+<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+<script>
+function validate() {
+	$("#file_error").html("");
+	$(".demoInputBox").css("border-color","#F0F0F0");
+	var file_size = $('#pic')[0].files[0].size;
+	if(file_size>2097152) {
+		$("#file_error").html("File size is greater than 2MB");
+		$(".demoInputBox").css("border-color","#FF0000");
+		return false;
+	} 
+	return true;
+}
+</script>
+</head>
+<body>
+<form name="frmFile" id="frmFile" method="post" action="upload2.php"  onSubmit="return validate();">
+<div><input type="file" name="pic" id="pic" class="demoInputBox" /> <span id="file_error"></span></div>
+<div><input type="submit" id="btnSubmit" value="Upload"/></div>
+</form>
+</body>
+</html>
